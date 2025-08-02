@@ -3,40 +3,27 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>PyScript: График с matplotlib</title>
+    <title>PyScript matplotlib example</title>
 
-    <!-- Подключение PyScript (замена устаревших ссылок на рабочие) -->
-    <link rel="stylesheet" href="https://pyscript.net/releases/2024.1.1/core.css" />
-    <script type="module" src="https://pyscript.net/releases/2024.1.1/core.js"></script>
+    <link rel="stylesheet" href="https://pyscript.net/latest/pyscript.css" />
+    <script defer src="https://pyscript.net/latest/pyscript.js"></script>
 
-    <py-env>
-        - numpy
-    </py-env>
+    <py-config>
+        packages = ["matplotlib", "numpy"]
+    </py-config>
 </head>
 <body>
-    <h1>PyScript: График с matplotlib</h1>
+    <h1>PyScript: График matplotlib</h1>
 
     <py-script>
-import asyncio
-import pyodide
+import matplotlib.pyplot as plt
+import numpy as np
 
-# Асинхронная функция для загрузки micropip и matplotlib
-async def main():
-    await pyodide.loadPackage("micropip")
-    import micropip
-    await micropip.install("matplotlib")
+x = np.random.rand(100)
+y = np.random.rand(100)
 
-    import numpy as np
-    import matplotlib.pyplot as plt
-
-    x = np.random.rand(100)
-    y = np.random.rand(100)
-
-    plt.scatter(x, y)
-    plt.show()
-
-# Запуск корутины в фоне без top-level await
-asyncio.ensure_future(main())
+plt.scatter(x, y)
+plt.show()
     </py-script>
 </body>
 </html>
