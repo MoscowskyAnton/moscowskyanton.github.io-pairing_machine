@@ -26,10 +26,26 @@
 
         <title>PyScript Hello World</title>
         <link rel="icon" type="image/png" href="./assets/favicon.png" />
+		
+		<py-env>
+			- numpy
+			- matplotlib
+		</py-env>
     </head>
 
     <body>
-        <dialog id="loading">
+	    <h1>PyScript: запуск Python в браузере</h1>
+		<py-script>
+			import matplotlib.pyplot as plt
+			import numpy as np
+
+			x = np.random.rand(100)
+			y = np.random.rand(100)
+
+			plt.scatter(x, y)
+			plt.show()
+		</py-script>
+        <!-- <dialog id="loading">
             <h1>Loading...</h1>
         </dialog>
 
@@ -51,6 +67,6 @@
                 now = datetime.now()
                 display(now.strftime("%m/%d/%Y, %H:%M:%S"))
             </script>
-        </section>
+        </section> -->
     </body>
 </html>
