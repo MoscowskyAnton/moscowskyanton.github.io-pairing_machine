@@ -36,38 +36,21 @@
     <body>
 	    <h1>PyScript: запуск Python в браузере</h1>
 		<py-script>
-			await micropip.install("matplotlib")
-			import matplotlib.pyplot as plt
-			import numpy as np
+		import asyncio
+		import micropip
+		import matplotlib.pyplot as plt
+		import numpy as np
 
+		async def main():
+			await micropip.install("matplotlib")
 			x = np.random.rand(100)
 			y = np.random.rand(100)
-
+			
 			plt.scatter(x, y)
 			plt.show()
+
+		asyncio.run(main())
 		</py-script>
-        <!-- <dialog id="loading">
-            <h1>Loading...</h1>
-        </dialog>
 
-        <nav class="navbar" style="background-color: #000000">
-            <div class="app-header">
-                <a href="/">
-                    <img src="./assets/logo.png" class="logo" />
-                </a>
-                <a class="title" href="" style="color: #f0ab3c">Hello World</a>
-            </div>
-        </nav>
-
-        <section class="pyscript">
-            Hello world! <br />
-            This is the current date and time, as computed by Python:
-            <script type="py">
-                from pyscript import display
-                from datetime import datetime
-                now = datetime.now()
-                display(now.strftime("%m/%d/%Y, %H:%M:%S"))
-            </script>
-        </section> -->
     </body>
 </html>
