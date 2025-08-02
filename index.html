@@ -36,10 +36,9 @@
     <body>
 	    <h1>PyScript: запуск Python в браузере</h1>
 		<py-script>
-		import asyncio
+		import pyodide
 
 		async def main():
-			import pyodide
 			await pyodide.loadPackage("micropip")  # Загружаем micropip
 			import micropip
 			await micropip.install("matplotlib")
@@ -53,8 +52,10 @@
 			plt.scatter(x, y)
 			plt.show()
 
-		asyncio.run(main())
+		# Запускаем корутину напрямую через await
+		await main()
 		</py-script>
+
 
 
     </body>
