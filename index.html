@@ -2,18 +2,21 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8" />
-    <title>PyScript Demo</title>
+    <title>PyScript: пример с зависимостями</title>
+    <!-- Подключаем стили и скрипт PyScript с CDN -->
     <link rel="stylesheet" href="https://pyscript.net/latest/pyscript.css" />
     <script defer src="https://pyscript.net/latest/pyscript.js"></script>
-</head>
-<body>
-    <h1>PyScript: запуск Python в браузере</h1>
 
+    <!-- Объявляем зависимости в py-env -->
     <py-env>
         - numpy
         - matplotlib
     </py-env>
+</head>
+<body>
+    <h1>PyScript с подключёнными зависимостями</h1>
 
+    <!-- Python-код внутри тега py-script -->
     <py-script>
         import matplotlib.pyplot as plt
         import numpy as np
