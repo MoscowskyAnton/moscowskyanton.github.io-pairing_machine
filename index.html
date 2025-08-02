@@ -37,20 +37,25 @@
 	    <h1>PyScript: запуск Python в браузере</h1>
 		<py-script>
 		import asyncio
-		import micropip
-		import matplotlib.pyplot as plt
-		import numpy as np
 
 		async def main():
+			import pyodide
+			await pyodide.loadPackage("micropip")  # Загружаем micropip
+			import micropip
 			await micropip.install("matplotlib")
+			
+			import matplotlib.pyplot as plt
+			import numpy as np
+
 			x = np.random.rand(100)
 			y = np.random.rand(100)
-			
+
 			plt.scatter(x, y)
 			plt.show()
 
 		asyncio.run(main())
 		</py-script>
+
 
     </body>
 </html>
