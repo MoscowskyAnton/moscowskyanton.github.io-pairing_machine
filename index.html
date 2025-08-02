@@ -1,64 +1,42 @@
-<!doctype html>
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>PyScript: График с matplotlib</title>
 
-<html>
-    <head>
-        <!-- Recommended meta tags -->
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <!-- Подключение PyScript (замена устаревших ссылок на рабочие) -->
+    <link rel="stylesheet" href="https://pyscript.net/releases/2024.1.1/core.css" />
+    <script type="module" src="https://pyscript.net/releases/2024.1.1/core.js"></script>
 
-        <!-- PyScript CSS -->
-        <link rel="stylesheet" href="https://pyscript.net/releases/2024.1.1/core.css">
-        <!-- CSS for examples -->
-        <link rel="stylesheet" href="./assets/css/examples.css" />
+    <py-env>
+        - numpy
+    </py-env>
+</head>
+<body>
+    <h1>PyScript: График с matplotlib</h1>
 
-        <!-- This script tag bootstraps PyScript -->
-        <script type="module" src="https://pyscript.net/releases/2024.1.1/core.js"></script>
+    <py-script>
+import asyncio
+import pyodide
 
-        <!-- for splashscreen -->
-        <style>
-            #loading { outline: none; border: none; background: transparent }
-        </style>
-        <script type="module">
-            const loading = document.getElementById('loading');
-            addEventListener('py:ready', () => loading.close());
-            loading.showModal();
-        </script>
+# Асинхронная функция для загрузки micropip и matplotlib
+async def main():
+    await pyodide.loadPackage("micropip")
+    import micropip
+    await micropip.install("matplotlib")
 
-        <title>PyScript Hello World</title>
-        <link rel="icon" type="image/png" href="./assets/favicon.png" />
-		
-		<py-env>
-			- numpy
-			- matplotlib
-		</py-env>
-    </head>
+    import numpy as np
+    import matplotlib.pyplot as plt
 
-    <body>
-	    <h1>PyScript: запуск Python в браузере</h1>
-		<py-script output="myoutput">
-		import asyncio
-		import pyodide
+    x = np.random.rand(100)
+    y = np.random.rand(100)
 
-		async def main():
-			await pyodide.loadPackage("micropip")
-			import micropip
-			await micropip.install("matplotlib")
-			
-			import matplotlib.pyplot as plt
-			import numpy as np
+    plt.scatter(x, y)
+    plt.show()
 
-			x = np.random.rand(100)
-			y = np.random.rand(100)
-
-			plt.scatter(x, y)
-			plt.show()
-
-		asyncio.ensure_future(main())
-		</py-script>
-		<div id="myoutput"></div>
-
-
-
-
-    </body>
+# Запуск корутины в фоне без top-level await
+asyncio.ensure_future(main())
+    </py-script>
+</body>
 </html>
