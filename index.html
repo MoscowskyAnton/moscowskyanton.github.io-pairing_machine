@@ -2,12 +2,12 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8" />
-    <title>PyScript: пример с зависимостями</title>
-    <!-- Подключаем стили и скрипт PyScript с CDN -->
+    <title>PyScript Demo</title>
+    <!-- Подключаем PyScript стили и скрипты с CDN -->
     <link rel="stylesheet" href="https://pyscript.net/latest/pyscript.css" />
     <script defer src="https://pyscript.net/latest/pyscript.js"></script>
 
-    <!-- Объявляем зависимости в py-env -->
+    <!-- Объявляем зависимости -->
     <py-env>
         - numpy
         - matplotlib
@@ -16,7 +16,7 @@
 <body>
     <h1>PyScript с подключёнными зависимостями</h1>
 
-    <!-- Python-код внутри тега py-script -->
+    <!-- Python-код, который будет исполнен PyScript -->
     <py-script>
         import matplotlib.pyplot as plt
         import numpy as np
